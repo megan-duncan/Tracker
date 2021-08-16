@@ -1,48 +1,47 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { deleteActivityAction, updateActivityAction } from '../actions/activities'
+// import { deleteActivityAction, updateActivityAction } from '../actions/activities'
 
 const Activity = (props) => {
   const { activity, dispatch, habits } = props
 
-  const [editing, setEditing] = useState(false)
-  const [formData, setFormData] = useState({
-    id: activity.id,
-    habit_id: activity.habit_id,
-    name: activity.name,
-    spotify_id: activity.spotify_id,
-    image: activity.image
-  })
+  // const [editing, setEditing] = useState(false)
+  // const [formData, setFormData] = useState({
+  //   id: activity.id,
+  //   habit_id: activity.habit_id
+  // })
+  const habit = habits.find(habit => habit.id === activity.habits_id)
+  console.log(habit)
+  // const deleteHandler = () => {
+  //   return dispatch(deleteActivityAction(activity.id))
+  // }
 
-  const deleteHandler = () => {
-    return dispatch(deleteActivityAction(activity.id))
-  }
+  // const toggleEditing = () => {
+  //   setEditing(!editing)
+  // }
 
-  const toggleEditing = () => {
-    setEditing(!editing)
-  }
+  // const changeHandler = (event) => {
+  //   setFormData({
+  //     ...formData,
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
-  const changeHandler = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    })
-  }
-
-  const submitHandler = (event) => {
-    event.preventDefault()
-    dispatch(updateActivityAction(formData))
-    setEditing(false)
-  }
+  // const submitHandler = (event) => {
+  //   event.preventDefault()
+  //   dispatch(updateActivityAction(formData))
+  //   setEditing(false)
+  // }
 
   return (
     <div key={activity.id}>
-      <h3>{activity.name}</h3>
-      <img style={{ width: '200px' }} src={activity.image} alt={`${activity.name} activity art`} />
-      <button onClick={toggleEditing}>Edit</button>
-      <button onClick={deleteHandler}>Delete</button>
-      {editing && (
+      <h3>{activity.date}</h3>
+      <p>{habit.name}</p>
+      {/* <img style={{ width: '200px' }} src={activity.image} alt={`${activity.name} activity art`} /> */}
+      {/* <button onClick={toggleEditing}>Edit</button> */}
+      {/* <button onClick={deleteHandler}>Delete</button> */}
+      {/* {editing && (
         <form onSubmit={submitHandler}>
           <label htmlFor="name">Activity name</label>
           <input type="text" name="name" id="name" onChange={changeHandler} value={formData.name} /><br />
@@ -59,8 +58,8 @@ const Activity = (props) => {
           </select><br />
           <button type="submit">Update</button>
         </form>
-      )}
-      <hr />
+      )} */}
+      {/* <hr /> */}
     </div>
   )
 }

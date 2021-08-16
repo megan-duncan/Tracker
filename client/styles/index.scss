@@ -3,4 +3,23 @@
 html, 
 body {
   font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+body {
+  background-color: #D5CFE1;
+  color: #5D5D81;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+  font-size: 4vw;
+
+  .logo {
+    max-width: 20vw;
+    margin: 5vw;
+  }
 }

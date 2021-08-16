@@ -5,6 +5,7 @@ import { getHabits } from '../actions/habits'
 import { getActivities } from '../actions/activities'
 // import Menu from './Menu'
 import Activity from './Activity'
+import Header from './Header'
 
 function App (props) {
   useEffect(() => {
@@ -14,7 +15,7 @@ function App (props) {
   return (
     <>
       <div className='app'>
-        <h1>Habit Tracker</h1>
+        <Header />
         <ul>
           {props.activities.map(activity => {
             return <Activity key={activity.id} activity={activity}/>
