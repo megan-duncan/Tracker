@@ -12,7 +12,6 @@ const Activity = (props) => {
   //   habit_id: activity.habit_id
   // })
   const habit = habits.find(habit => habit.id === activity.habits_id)
-  console.log(habit)
   // const deleteHandler = () => {
   //   return dispatch(deleteActivityAction(activity.id))
   // }
@@ -37,7 +36,9 @@ const Activity = (props) => {
   return (
     <div key={activity.id}>
       <h3>{activity.date}</h3>
-      <p>{habit.name}</p>
+      { habit.desired ? <p className='desired'>{habit.name}</p>
+        : <p className="habit">{habit.name}</p>
+      }
       {/* <img style={{ width: '200px' }} src={activity.image} alt={`${activity.name} activity art`} /> */}
       {/* <button onClick={toggleEditing}>Edit</button> */}
       {/* <button onClick={deleteHandler}>Delete</button> */}
