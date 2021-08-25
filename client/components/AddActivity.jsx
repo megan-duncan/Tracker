@@ -23,7 +23,8 @@ const AddHabit = (props) => {
       [event.target.name]: event.target.value,
       date: Date.now()
     })
-    setLabel(habits[event.target.value - 1].name)
+    const name = habits.find(habit => habit.id === (event.target.value - 1))
+    setLabel(name)
     console.log(formData)
   }
   const submitHandler = (event) => {

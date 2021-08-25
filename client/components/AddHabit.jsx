@@ -8,7 +8,7 @@ const AddHabit = (props) => {
 
   const [adding, setAdding] = useState(false)
   const [formData, setFormData] = useState({
-    name: 'name',
+    name: '...',
     desired: false
   })
 
