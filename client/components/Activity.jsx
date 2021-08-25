@@ -33,10 +33,10 @@ const Activity = (props) => {
   //   dispatch(updateActivityAction(formData))
   //   setEditing(false)
   // }
-
+  const activityDate = new Date(activity.date)
   return (
     <div key={activity.id}>
-      <h3>{activity.date}</h3>
+      <h3>{activityDate.toDateString()}</h3>
       { habit.desired ? <p className='desired'>{habit.name}</p>
         : <p className="habit">{habit.name}</p>
       }

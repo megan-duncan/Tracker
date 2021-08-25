@@ -11,6 +11,7 @@ const AddHabit = (props) => {
     habits_id: 0,
     date: Date.now()
   })
+  const [label, setLabel] = useState('')
 
   const toggleAddingActivity = () => {
     setAddingActivity(!addingActivity)
@@ -19,15 +20,20 @@ const AddHabit = (props) => {
   const changeHandler = (event) => {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      date: Date.now()
     })
-    console.log(event.target.name)
-    console.log(event.target.value)
+    setLabel(habits[event.target.value - 1].name)
+    console.log(formData)
   }
   const submitHandler = (event) => {
     event.preventDefault()
     dispatch(createActivity(formData))
     setAddingActivity(false)
+    setFormData({
+      habits_id: 0,
+      date: Date.now()
+    })
   }
   const habitList = []
   habits.map(habit => {
@@ -40,7 +46,7 @@ const AddHabit = (props) => {
         <form onSubmit={submitHandler}>
           <label htmlFor="habits_id">Choose a habit:</label>
           {/* <select options={ habitList } onChange={changeHandler}/> */}
-          <select value={'Habit'} name='habits_id' id="habits_id" onChange={changeHandler}>
+          <select value={label} name='habits_id' id="habits_id" onChange={changeHandler}>
             <option>Choose...</option>
             {habits.map(habit => {
               return <option key={habit.id} value={parseInt(habit.id)}>{habit.name}</option>

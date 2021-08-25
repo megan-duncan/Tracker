@@ -15,14 +15,15 @@ function App (props) {
     props.dispatch(getActivities())
   }, [])
   const todayDate = Date.now()
+  const readDate = new Date(todayDate)
   return (
     <>
       <div className='app'>
         <Header />
-        <p>{todayDate}</p>
+        <p>{readDate.toDateString()}</p>
         <ul>
-          {props.activities.map(activity => {
-            return <Activity key={activity.id} activity={activity} todayDate={todayDate}/>
+          {props.activities.sort((a, b) => a.date - b.date).map(activity => {
+            return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
           })}
         </ul>
         <AddHabit/>
