@@ -6,14 +6,15 @@ import { getActivities } from '../actions/activities'
 // import Menu from './Menu'
 import Activity from './Activity'
 import Header from './Header'
-import AddActivity from './AddHabit'
+import AddHabit from './AddHabit'
+import AddActivity from './AddActivity'
 
 function App (props) {
   useEffect(() => {
     props.dispatch(getHabits())
     props.dispatch(getActivities())
   }, [])
-  const todayDate = Date()
+  const todayDate = Date.now()
   return (
     <>
       <div className='app'>
@@ -24,7 +25,8 @@ function App (props) {
             return <Activity key={activity.id} activity={activity} todayDate={todayDate}/>
           })}
         </ul>
-        <AddActivity todayDate={todayDate}/>
+        <AddHabit/>
+        <AddActivity/>
       </div>
     </>
   )

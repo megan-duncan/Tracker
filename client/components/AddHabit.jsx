@@ -39,7 +39,7 @@ const AddHabit = (props) => {
           <label htmlFor="desired">Do I want to keep doing this?</label>
           <input type="checkbox" name="desired" id="desired" onChange={changeHandler} value={true} /><br />
           <br />
-          <button type="submit">Update</button>
+          <button type="submit">Add</button>
         </form>
       )}
       <hr />
