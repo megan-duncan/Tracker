@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-// import { deleteActivityAction, updateActivityAction } from '../actions/activities'
-
+import { deleteActivityAction } from '../actions/activities'
+// , { useState }
+// updateActivityAction
 const Activity = (props) => {
   const { activity, dispatch, habits } = props
 
@@ -12,9 +13,9 @@ const Activity = (props) => {
   //   habit_id: activity.habit_id
   // })
   const habit = habits.find(habit => habit.id === activity.habits_id)
-  // const deleteHandler = () => {
-  //   return dispatch(deleteActivityAction(activity.id))
-  // }
+  const deleteHandler = () => {
+    return dispatch(deleteActivityAction(activity.id))
+  }
 
   // const toggleEditing = () => {
   //   setEditing(!editing)
@@ -39,9 +40,7 @@ const Activity = (props) => {
       { habit.desired ? <p className='desired'>{habit.name}</p>
         : <p className="habit">{habit.name}</p>
       }
-      {/* <img style={{ width: '200px' }} src={activity.image} alt={`${activity.name} activity art`} /> */}
-      {/* <button onClick={toggleEditing}>Edit</button> */}
-      {/* <button onClick={deleteHandler}>Delete</button> */}
+      <button onClick={deleteHandler}>Delete</button>
       {/* {editing && (
         <form onSubmit={submitHandler}>
           <label htmlFor="name">Activity name</label>
@@ -60,7 +59,7 @@ const Activity = (props) => {
           <button type="submit">Update</button>
         </form>
       )} */}
-      {/* <hr /> */}
+      <hr />
     </div>
   )
 }
