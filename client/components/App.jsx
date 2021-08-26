@@ -8,10 +8,11 @@ import Activity from './Activity'
 import Header from './Header'
 import AddHabit from './AddHabit'
 import AddActivity from './AddActivity'
-// import Habits from './Habits'
+// import Habit from './Habit'
+import Habits from './Habits'
 
 function App (props) {
-  const { habits } = props
+  // const { habits } = props
   useEffect(() => {
     props.dispatch(getHabits())
     props.dispatch(getActivities())
@@ -40,11 +41,9 @@ function App (props) {
           <button onClick={() => setView('viewHabits')}>View Habits</button>
         </div>
         }
-        {view === 'viewHabits' && (
-          habits.map(habit => {
-            return <p key={habit.id}>{habit.name}</p>
-          })
-        )}
+        {view === 'viewHabits' &&
+        <Habits todayDate={todayDate} />
+        }
         <hr />
       </div>
     </>

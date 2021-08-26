@@ -1,43 +1,24 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-// import { createHabit } from '../actions/habits'
+import Habit from './Habit'
 
 const AddHabit = (props) => {
-  const { habits } = props
-
-  const [viewHabits, setViewHabits] = useState(false)
-  // const [view, setView] = useState('')
-
-  const toggleHabits = () => {
-    setViewHabits(!viewHabits)
-  }
-
-  // const changeView = (name) => {
-  //   setView(name)
-  //   toggleHabits()
-  // }
-  // const changeHandler = (event) => {
-  //   setFormData({
-  //     ...formData,
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-  // const submitHandler = (event) => {
-  //   event.preventDefault()
-  //   dispatch(createHabit(formData))
-  //   setHabits(false)
-  // }
+  const { habits, todayDate } = props
+  const [habitView, setHabitView] = useState('all')
 
   return (
     <div>
-      <button onClick={toggleHabits}>View Habits</button>
-      {viewHabits && (
+      {habitView === 'all' && (
         habits.map(habit => {
-          return <p key={habit.id}>{habit.name}</p>
+          const name = habit.name
+          return <p onClick={() => setHabitView(name)} key={habit.id}>{habit.name}</p>
         })
       )}
+      {habitView === habits[0].name &&
+       <Habit habit={habits[0]} todayDate={todayDate}/>
+      }
+
       <hr />
     </div>
   )
