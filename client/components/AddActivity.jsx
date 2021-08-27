@@ -5,32 +5,36 @@ import { createActivity } from '../actions/activities'
 
 const AddHabit = (props) => {
   const { dispatch, habits } = props
-  console.log(habits)
   const [addingActivity, setAddingActivity] = useState(false)
+  const [addDate, setAddDate] = useState(false)
   const [formData, setFormData] = useState({
     habits_id: 0,
     date: Date.now()
   })
   const [label, setLabel] = useState('')
-
+  const toggleAddDate = () => {
+    // evt.preventdefault()
+    setAddDate(!addDate)
+  }
   const toggleAddingActivity = () => {
     setAddingActivity(!addingActivity)
   }
-
   const changeHandler = (event) => {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
-      date: Date.now()
+      [event.target.name]: event.target.value
     })
-    const name = habits.find(habit => habit.id === (event.target.value - 1))
+    const name = habits.find(habit => habit.id === (formData.habits_id - 1))
     setLabel(name)
-    console.log(formData)
+  }
+  const convertDate = () => {
+    formData.date = new Date(formData.date).getTime()
   }
   const submitHandler = (event) => {
     event.preventDefault()
     dispatch(createActivity(formData))
     setAddingActivity(false)
+    setAddDate(false)
     setFormData({
       habits_id: 0,
       date: Date.now()
@@ -40,6 +44,7 @@ const AddHabit = (props) => {
   habits.map(habit => {
     return habitList.push({ label: habit.name, value: habit.id })
   })
+
   return (
     <div>
       <button onClick={toggleAddingActivity}>Add Activity</button>
@@ -53,6 +58,18 @@ const AddHabit = (props) => {
               return <option key={habit.id} value={parseInt(habit.id)}>{habit.name}</option>
             }) }
           </select>
+          {addDate
+            ? (
+              <div>
+                <label htmlFor="date">date:</label>
+                <input type="date" id="date" name="date" value={formData.date} onChange={changeHandler}/>
+                <button type="button" onClick={convertDate}>Add Date</button>
+              </div>
+            )
+            : <div>
+              <p>If your date is one other than today: </p>
+              <button type="button" onClick={toggleAddDate}>Add Date</button>
+            </div>}
           <br />
           <button type="submit">Add</button>
         </form>
