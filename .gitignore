@@ -9,3 +9,4 @@ server/public/styles.css.map
 .env
 tags
 TODO
+.DS_Store

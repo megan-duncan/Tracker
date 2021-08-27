@@ -27,7 +27,7 @@ function App (props) {
   return (
     <>
       <div className='app'>
-        <Header />
+        <Header setView={setView}/>
         <p>{readDate.toDateString()}</p>
         {view === 'landing' &&
         <div>

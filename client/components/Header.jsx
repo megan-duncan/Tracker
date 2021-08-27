@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Header = (props) => {
+const Header = ({ setView }) => {
   return (
     <>
       <div className='header'>
         <img className='logo' src='/android-chrome-192x192.png' alt='Habit Tracker Logo'/>
-        <p>Habit Tracker</p>
+        <p onClick={() => setView('landing')}>Habit Tracker</p>
       </div>
     </>
   )
