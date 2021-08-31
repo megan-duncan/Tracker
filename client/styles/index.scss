@@ -14,30 +14,36 @@ body {
 .header {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: baseline;
+  align-items: flex-end;
+  justify-content: flex-end;
   font-size: 4vw;
+  width: 90vw;
 
   .logo {
     max-width: 20vw;
-    margin: 5vw;
+    margin: 2vw;
   }
 }
 
 .nav {
+  font-size: 2vw;
   display:flex;
   flex-direction: row;
   justify-content: baseline;
   width: 80vw;
+  margin-top: -9vw;
   .link {
-    width: 20vw;
+    width: 15vw;
     height: 4vw;
-    margin: 1vw;
-    padding-bottom: .5vw;
-    // justify-content: center;
+    margin: .5vw;
     text-align: center;
     background-color: #9F9EB5;
-    color: #E1DEE9;
+    padding-bottom: .5vw;
+    // padding-top: .5vw;
+    .text {
+      color: #E1DEE9;
+      margin-top: 1vw;
+    }
     :hover {
       color:#5D5D81;
       cursor: default;
