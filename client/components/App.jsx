@@ -6,10 +6,11 @@ import { getActivities } from '../actions/activities'
 // import Menu from './Menu'
 import Activity from './Activity'
 import Header from './Header'
-import AddHabit from './AddHabit'
+// import AddHabit from './AddHabit'
 import AddActivity from './AddActivity'
 // import Habit from './Habit'
 import Habits from './Habits'
+import Nav from './Nav'
 
 function App (props) {
   // const { habits } = props
@@ -28,6 +29,7 @@ function App (props) {
     <>
       <div className='app'>
         <Header setView={setView}/>
+        <Nav setView={setView}/>
         <p>{readDate.toDateString()}</p>
         {view === 'landing' &&
         <div>
@@ -36,7 +38,7 @@ function App (props) {
               return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
             })}
           </ul>
-          <AddHabit/>
+          {/* <AddHabit/> */}
           <AddActivity/>
           <button onClick={() => setView('viewHabits')}>View Habits</button>
         </div>

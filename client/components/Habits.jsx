@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import Habit from './Habit'
+import AddHabit from './AddHabit'
 
-const AddHabit = (props) => {
+const Habits = (props) => {
   const { habits, todayDate } = props
   const [habitView, setHabitView] = useState('all')
 
@@ -21,6 +22,7 @@ const AddHabit = (props) => {
       {habitView === habits[1].name &&
         <Habit habit={habits[1]} todayDate={todayDate}/>
       }
+      <AddHabit/>
 
       <hr />
     </div>
@@ -33,4 +35,4 @@ const mapStateToProps = (globalState) => {
   }
 }
 
-export default connect(mapStateToProps)(AddHabit)
+export default connect(mapStateToProps)(Habits)
