@@ -35,12 +35,14 @@ const Activity = (props) => {
   // }
   const activityDate = new Date(activity.date)
   return (
-    <div key={activity.id}>
+    <div className="activity" key={activity.id}>
       <h3>{activityDate.toDateString()}</h3>
-      { habit.desired ? <p className='desired'>{habit.name}</p>
-        : <p className="habit">{habit.name}</p>
-      }
-      <button onClick={deleteHandler}>Delete</button>
+      <div className="content">
+        { habit.desired ? <p className='desired'>{habit.name}</p>
+          : <p className="habit">{habit.name}</p>
+        }
+        <button onClick={deleteHandler}>Delete</button>
+      </div>
       {/* {editing && (
         <form onSubmit={submitHandler}>
           <label htmlFor="name">Activity name</label>

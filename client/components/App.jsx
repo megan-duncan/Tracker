@@ -32,21 +32,17 @@ function App (props) {
         <Nav setView={setView}/>
         <p>{readDate.toDateString()}</p>
         {view === 'landing' &&
-        <div>
-          <ul>
-            {props.activities.sort((a, b) => a.date - b.date).map(activity => {
-              return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
-            })}
-          </ul>
-          {/* <AddHabit/> */}
+        <div className="activities">
+          {props.activities.sort((a, b) => a.date - b.date).map(activity => {
+            return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
+          })}
           <AddActivity/>
-          <button onClick={() => setView('viewHabits')}>View Habits</button>
+          {/* <AddHabit/> */}
         </div>
         }
         {view === 'viewHabits' &&
         <Habits todayDate={todayDate} />
         }
-        <hr />
       </div>
     </>
   )

@@ -47,7 +47,7 @@ const AddHabit = (props) => {
 
   return (
     <div>
-      <button onClick={toggleAddingActivity}>Add Activity</button>
+      <button onClick={toggleAddingActivity}>Add Diary Entry</button>
       {addingActivity && (
         <form onSubmit={submitHandler}>
           <label htmlFor="habits_id">Choose a habit:</label>

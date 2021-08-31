@@ -11,6 +11,13 @@ body {
   color: #5D5D81;
 }
 
+.app {
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -53,6 +60,18 @@ body {
     }
   }
 
+}
+
+.activities {
+  width: 100%;
+}
+
+.activity {
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .desired {

@@ -22,6 +22,9 @@ const Habits = (props) => {
       {habitView === habits[1].name &&
         <Habit habit={habits[1]} todayDate={todayDate}/>
       }
+      {habitView === habits[2].name &&
+        <Habit habit={habits[2]} todayDate={todayDate}/>
+      }
       <AddHabit/>
 
       <hr />
