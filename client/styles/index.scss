@@ -16,9 +16,12 @@ body {
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
-  font-size: 4vw;
-  width: 90vw;
-
+  width: 100vw;
+  .text{
+    margin: 0;
+    font-size: 6vw;
+    padding-bottom: 2.7vw;
+  }
   .logo {
     max-width: 20vw;
     margin: 2vw;
