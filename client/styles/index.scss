@@ -24,6 +24,28 @@ body {
   }
 }
 
+.nav {
+  display:flex;
+  flex-direction: row;
+  justify-content: baseline;
+  width: 80vw;
+  .link {
+    width: 20vw;
+    height: 4vw;
+    margin: 1vw;
+    padding-bottom: .5vw;
+    // justify-content: center;
+    text-align: center;
+    background-color: #9F9EB5;
+    color: #E1DEE9;
+    :hover {
+      color:#5D5D81;
+      cursor: default;
+    }
+  }
+
+}
+
 .desired {
   color: green;
 }

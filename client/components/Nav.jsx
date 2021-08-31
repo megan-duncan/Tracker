@@ -5,8 +5,8 @@ const Nav = ({ setView }) => {
   return (
     <>
       <div className='nav'>
-        <div onClick={() => setView('landing')}><p>ACTIVITIES</p></div>
-        <div onClick={() => setView('viewHabits')}><p >HABITS</p></div>
+        <div className="link" onClick={() => setView('landing')}><p>ACTIVITIES</p></div>
+        <div className="link" onClick={() => setView('viewHabits')}><p >HABITS</p></div>
       </div>
     </>
   )
