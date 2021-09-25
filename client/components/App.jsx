@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { getHabits } from '../actions/habits'
-import { getActivities } from '../actions/activities'
+import { getEntries } from '../actions/entries'
 // import Menu from './Menu'
 import Activity from './Activity'
 import Header from './Header'
@@ -16,7 +16,7 @@ function App (props) {
   // const { habits } = props
   useEffect(() => {
     props.dispatch(getHabits())
-    props.dispatch(getActivities())
+    props.dispatch(getEntries())
   }, [])
   const todayDate = Date.now()
   const readDate = new Date(todayDate)

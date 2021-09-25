@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { createActivity } from '../actions/activities'
+import { createActivity } from '../actions/entries'
 
 const AddHabit = (props) => {
   const { dispatch, habits } = props

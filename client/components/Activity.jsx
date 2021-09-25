@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { deleteActivityAction } from '../actions/activities'
+import { deleteActivityAction } from '../actions/entries'
 
 const Activity = (props) => {
   const { activity, dispatch, habits } = props
