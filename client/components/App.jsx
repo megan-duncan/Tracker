@@ -20,20 +20,17 @@ function App (props) {
   }, [])
   const todayDate = Date.now()
   const readDate = new Date(todayDate)
-  const [view, setView] = useState('landing')
+  const [view, setView] = useState('diary')
 
-  // const toggleHabits = () => {
-  //   setViewHabits(!viewHabits)
-  // }
   return (
     <>
       <div className='app'>
         <Header setView={setView}/>
         <Nav setView={setView}/>
         <p>{readDate.toDateString()}</p>
-        {view === 'landing' &&
+        {view === 'diary' &&
         <div className="activities">
-          {props.activities.sort((a, b) => a.date - b.date).map(activity => {
+          {props.activities.sort((a, b) => b.date - a.date).map(activity => {
             return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
           })}
           <AddActivity/>
