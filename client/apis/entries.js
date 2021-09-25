@@ -1,8 +1,8 @@
 import request from 'superagent'
 
-const baseURL = 'api/v1/activities'
+const baseURL = 'api/v1/entries'
 
-export const fetchActivities = () => {
+export const fetchEntries = () => {
   return request.get(baseURL)
     .then(response => {
       return response.body
@@ -12,7 +12,7 @@ export const fetchActivities = () => {
     })
 }
 
-export const fetchActivityById = (id) => {
+export const fetchEntryById = (id) => {
   return request.get(`${baseURL}/${id}`)
     .then(response => {
       return response.body
@@ -22,9 +22,9 @@ export const fetchActivityById = (id) => {
     })
 }
 
-export const addActivity = (activity) => {
+export const addEntry = (entry) => {
   return request.post(baseURL)
-    .send(activity)
+    .send(entry)
     .then(response => {
       return response.body
     })
@@ -33,9 +33,9 @@ export const addActivity = (activity) => {
     })
 }
 
-export const updateActivity = (id, activity) => {
+export const updateEntry = (id, entry) => {
   return request.patch(`${baseURL}/${id}`)
-    .send(activity)
+    .send(entry)
     .then(response => {
       return response.body
     })
@@ -44,7 +44,7 @@ export const updateActivity = (id, activity) => {
     })
 }
 
-export const deleteActivity = (id) => {
+export const deleteEntry = (id) => {
   return request.delete(`${baseURL}/${id}`)
     .then(response => {
       return response.body

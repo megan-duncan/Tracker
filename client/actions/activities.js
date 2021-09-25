@@ -1,71 +1,71 @@
-import { fetchActivities, addActivity, deleteActivity, updateActivity } from '../apis/activities'
+import { fetchEntries, addEntry, deleteEntry, updateEntry } from '../apis/entries'
 
-export const SET_ACTIVITIES = 'SET_ACTIVITIES'
-export const ADD_ACTIVITY = 'ADD_ACTIVITY'
-export const UPDATE_ACTIVITY = 'UPDATE_ACTIVITY'
-export const DELETE_ACTIVITY = 'DELETE_ACTIVITY'
+export const SET_ENTRIES = 'SET_ENTRIES'
+export const ADD_ENTRY = 'ADD_ENTRY'
+export const UPDATE_ENTRY = 'UPDATE_ENTRY'
+export const DELETE_ENTRY = 'DELETE_ENTRY'
 
-const setActivities = (activities) => {
+const setEntries = (entries) => {
   return {
-    type: SET_ACTIVITIES,
-    activities
+    type: SET_ENTRIES,
+    entries
   }
 }
 
-export const getActivities = () => {
+export const getEntries = () => {
   return dispatch => {
-    return fetchActivities()
-      .then(activities => {
-        return dispatch(setActivities(activities))
+    return fetchEntries()
+      .then(entries => {
+        return dispatch(setEntries(entries))
       })
   }
 }
 
-const addActivityToStore = (activity) => {
+const addEntryToStore = (entry) => {
   return {
-    type: ADD_ACTIVITY,
-    activity
+    type: ADD_ENTRY,
+    entry
   }
 }
 
-export const createActivity = (activity) => {
+export const createEntry = (entry) => {
   return dispatch => {
-    return addActivity(activity)
-      .then(activity => {
-        return dispatch(addActivityToStore(activity))
+    return addEntry(entry)
+      .then(entry => {
+        return dispatch(addEntryToStore(entry))
       })
   }
 }
 
-const updateActivityInStore = (id, activity) => {
+const updateEntryInStore = (id, entry) => {
   return {
-    type: UPDATE_ACTIVITY,
+    type: UPDATE_ENTRY,
     id,
-    activity
+    entry
   }
 }
 
-export const updateActivityAction = (activity) => {
+export const updateEntryAction = (entry) => {
   return dispatch => {
-    return updateActivity(activity.id, activity)
-      .then(updatedActivity => {
-        return dispatch(updateActivityInStore(updatedActivity.id, updatedActivity))
+    return updateEntry(entry.id, entry)
+      .then(updatedEntry => {
+        return dispatch(updateEntryInStore(updatedEntry.id, updatedEntry))
       })
   }
 }
 
-const deleteActivityFromStore = (id) => {
+const deleteEntryFromStore = (id) => {
   return {
-    type: DELETE_ACTIVITY,
+    type: DELETE_ENTRY,
     id
   }
 }
 
-export const deleteActivityAction = (id) => {
+export const deleteEntryAction = (id) => {
   return dispatch => {
-    return deleteActivity(id)
+    return deleteEntry(id)
       .then(() => {
-        return dispatch(deleteActivityFromStore(id))
+        return dispatch(deleteEntryFromStore(id))
       })
   }
 }
