@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('activities', table => {
+  return knex.schema.createTable('diary', table => {
     table.increments('id')
     table.integer('habits_id')
     table.integer('date')
@@ -8,5 +8,5 @@ exports.up = function (knex) {
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('activities')
+  return knex.schema.dropTable('diary')
 }
