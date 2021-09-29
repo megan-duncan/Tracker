@@ -1,43 +1,52 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import Habit from './Habit'
 import AddHabit from './AddHabit'
+import NoEntries from './NoEntries'
 
 const Habits = (props) => {
-  const { habits, todayDate } = props
-  const [habitView, setHabitView] = useState('all')
-
+  const { habits, todayDate, setHabitView, habitView, entries } = props
+  const clickHandler = (entries, habit) => {
+    if (entries.find(activity => activity.habits_id === habit.id)) {
+      setHabitView(habit.name)
+    } else setHabitView('no entries')
+  }
+  const allHabits = (entries, habitView, habits) => {
+    if (habitView === 'all') {
+      return habits.map(habit => {
+        if (habit.desired) {
+          return <p onClick={() => clickHandler(entries, habit)} key={habit.id} className="desired">{habit.name}</p>
+        } else {
+          return <p onClick={() => clickHandler(entries, habit)} key={habit.id} className="habit">{habit.name}</p>
+        }
+      })
+    }
+  }
+  const eachHabit = (habitView, habits) => {
+    return habits.map(habit => {
+      return habitView === habit.name &&
+      <Habit habit={habit} todayDate={todayDate} key={habit.id}/>
+    })
+  }
   return (
     <div>
-      {habitView === 'all' && (
-        habits.map(habit => {
-          const name = habit.name
-          return <p onClick={() => setHabitView(name)} key={habit.id}>{habit.name}</p>
-        })
-      )}
-      {habitView === habits[0].name &&
-       <Habit habit={habits[0]} todayDate={todayDate}/>
+      {allHabits(entries, habitView, habits)}
+      {eachHabit(habitView, habits)}
+      {habitView === 'no entries' &&
+      <NoEntries />
       }
-      {habitView === habits[1].name &&
-        <Habit habit={habits[1]} todayDate={todayDate}/>
-      }
-      {habitView === habits[2].name &&
-        <Habit habit={habits[2]} todayDate={todayDate}/>
-      }
-      {habitView === habits[3].name &&
-        <Habit habit={habits[3]} todayDate={todayDate}/>
-      }
+      {habitView === 'all' &&
       <AddHabit/>
-
-      <hr />
+      }
     </div>
   )
 }
 
 const mapStateToProps = (globalState) => {
   return {
-    habits: globalState.habits
+    habits: globalState.habits,
+    entries: globalState.entries
   }
 }
 
