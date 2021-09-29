@@ -1,19 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Nav = ({ setView }) => {
+const Nav = ({ setView, setHabitView }) => {
+  const clickHandler = () => {
+    setView('viewHabits')
+    setHabitView('all')
+  }
   return (
     <>
       <div className='nav'>
-        <div className="link" onClick={() => setView('landing')}><p className="text">DIARY</p></div>
-        <div className="link" onClick={() => setView('viewHabits')}><p className="text">HABITS</p></div>
+        <div className="link" onClick={() => setView('diary')}><p className="text">DIARY</p></div>
+        <div className="link" onClick={() => clickHandler()}><p className="text">HABITS</p></div>
       </div>
     </>
   )
 }
 const mapStateToProps = (globalState) => {
   return {
-    albums: globalState.albums
+    habits: globalState.habits,
+    entries: globalState.entries
   }
 }
 

@@ -13,7 +13,6 @@ const Header = ({ setView }) => {
 }
 const mapStateToProps = (globalState) => {
   return {
-    albums: globalState.albums
   }
 }
 
