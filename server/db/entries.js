@@ -1,17 +1,17 @@
 const connection = require('./connection')
 
 const getAllEntries = (db = connection) => {
-  return db('diary')
+  return db('entries')
 }
 
 const getEntryById = (id, db = connection) => {
-  return db('diary')
+  return db('entries')
     .where('id', id)
     .first()
 }
 
 const addEntry = (entry, db = connection) => {
-  return db('diary')
+  return db('entries')
     .insert(entry)
     .then(ids => {
       return getEntryById(ids[0])
@@ -19,7 +19,7 @@ const addEntry = (entry, db = connection) => {
 }
 
 const updateEntry = (id, entry, db = connection) => {
-  return db('diary')
+  return db('entries')
     .where('id', id)
     .update(entry)
     .then(() => {
@@ -28,7 +28,7 @@ const updateEntry = (id, entry, db = connection) => {
 }
 
 const deleteEntry = (id, db = connection) => {
-  return db('diary')
+  return db('entries')
     .where('id', id)
     .delete()
 }

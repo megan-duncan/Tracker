@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { deleteActivityAction } from '../actions/entries'
+import { deleteEntryAction } from '../actions/entries'
 
 const Activity = (props) => {
   const { activity, dispatch, habits } = props
 
   const habit = habits.find(habit => habit.id === activity.habits_id)
   const deleteHandler = () => {
-    return dispatch(deleteActivityAction(activity.id))
+    return dispatch(deleteEntryAction(activity.id))
   }
 
   const activityDate = new Date(activity.date)
@@ -16,8 +16,8 @@ const Activity = (props) => {
     <div className="activity" key={activity.id}>
       <h3>{activityDate.toDateString()}</h3>
       <div className="content">
-        { habit.desired ? <p className='desired'>{habit.name}</p>
-          : <p className="habit">{habit.name}</p>
+        { habit.desired ? <div className='desired'><p>{habit.name}</p></div>
+          : <div className="habit"><p>{habit.name}</p></div>
         }
         <button onClick={deleteHandler}>Delete</button>
       </div>

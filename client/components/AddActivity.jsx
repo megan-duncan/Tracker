@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { createActivity } from '../actions/entries'
+import { createEntry } from '../actions/entries'
 
 const AddHabit = (props) => {
   const { dispatch, habits } = props
@@ -13,7 +13,6 @@ const AddHabit = (props) => {
   })
   const [label, setLabel] = useState('')
   const toggleAddDate = () => {
-    // evt.preventdefault()
     setAddDate(!addDate)
   }
   const toggleAddingActivity = () => {
@@ -32,7 +31,7 @@ const AddHabit = (props) => {
   }
   const submitHandler = (event) => {
     event.preventDefault()
-    dispatch(createActivity(formData))
+    dispatch(createEntry(formData))
     setAddingActivity(false)
     setAddDate(false)
     setFormData({
@@ -51,7 +50,6 @@ const AddHabit = (props) => {
       {addingActivity && (
         <form onSubmit={submitHandler}>
           <label htmlFor="habits_id">Choose a habit:</label>
-          {/* <select options={ habitList } onChange={changeHandler}/> */}
           <select value={label} name='habits_id' id="habits_id" onChange={changeHandler}>
             <option>Choose...</option>
             {habits.map(habit => {

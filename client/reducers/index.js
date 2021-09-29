@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import habits from './habits'
-import activities from './activities'
+import entries from './entries'
 
 export default combineReducers({
   habits,
-  activities
+  entries
 })

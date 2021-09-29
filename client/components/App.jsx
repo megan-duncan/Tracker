@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import { getHabits } from '../actions/habits'
 import { getEntries } from '../actions/entries'
-// import Menu from './Menu'
 import Activity from './Activity'
 import Header from './Header'
 // import AddHabit from './AddHabit'
@@ -21,16 +20,17 @@ function App (props) {
   const todayDate = Date.now()
   const readDate = new Date(todayDate)
   const [view, setView] = useState('diary')
+  const [habitView, setHabitView] = useState('all')
 
   return (
     <>
       <div className='app'>
         <Header setView={setView}/>
-        <Nav setView={setView}/>
+        <Nav setView={setView} setHabitView={setHabitView}/>
         <p>{readDate.toDateString()}</p>
         {view === 'diary' &&
         <div className="activities">
-          {props.activities.sort((a, b) => b.date - a.date).map(activity => {
+          {props.entries.sort((a, b) => b.date - a.date).map(activity => {
             return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
           })}
           <AddActivity/>
@@ -38,7 +38,7 @@ function App (props) {
         </div>
         }
         {view === 'viewHabits' &&
-        <Habits todayDate={todayDate} />
+        <Habits todayDate={todayDate} setHabitView={setHabitView} habitView={habitView}/>
         }
       </div>
     </>
@@ -47,7 +47,7 @@ function App (props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    activities: globalState.activities,
+    entries: globalState.entries,
     habits: globalState.habits
   }
 }
