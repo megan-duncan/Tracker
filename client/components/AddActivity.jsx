@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { createEntry } from '../actions/entries'
 
-const AddHabit = (props) => {
+const AddActivity = (props) => {
   const { dispatch, habits } = props
   const [addingActivity, setAddingActivity] = useState(false)
   const [addDate, setAddDate] = useState(false)
@@ -83,4 +83,4 @@ const mapStateToProps = (globalState) => {
   }
 }
 
-export default connect(mapStateToProps)(AddHabit)
+export default connect(mapStateToProps)(AddActivity)

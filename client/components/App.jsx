@@ -30,10 +30,10 @@ function App (props) {
         <p>{readDate.toDateString()}</p>
         {view === 'diary' &&
         <div className="activities">
+          <AddActivity/>
           {props.entries.sort((a, b) => b.date - a.date).map(activity => {
             return <Activity key={activity.id} date={activity.date} activity={activity} todayDate={todayDate}/>
           })}
-          <AddActivity/>
           {/* <AddHabit/> */}
         </div>
         }
